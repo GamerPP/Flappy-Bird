@@ -41,6 +41,7 @@ int main() {
             bird.velocity.y -= 1200*deltaTime;
             if (IsKeyPressed(KEY_SPACE)) bird.velocity.y = 650;
             bird.rect.y -= bird.velocity.y*deltaTime;
+
             if (bird.rect.y <= 0) { bird.velocity.y = 0; bird.rect.y = 0; }
             if (bird.rect.y + bird.rect.h >= windowSize.y) goto died;
 
@@ -57,12 +58,7 @@ int main() {
                         300
                     }, false
                 };
-
-                if (newPipe.safeArea.y < 0) newPipe.safeArea.y = 0;
-                if (newPipe.safeArea.y > windowSize.y) newPipe.safeArea.y = windowSize.y;
-
                 pipes.push_back(newPipe);
-
                 timeSincePipe -= 2.f;
             }
 
@@ -88,7 +84,7 @@ int main() {
             } EndDrawing();
         }
 died:
-        std::cout << "youre ass!!\n";
+        std::cout << "youre bad!!\n";
     }
 
 exit:
