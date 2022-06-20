@@ -22,6 +22,7 @@ int main() {
     ToggleFullscreen();
     windowSize = {GetScreenWidth(), GetScreenHeight()};
     srand(time(0));
+    SetTargetFPS(360);
 
     while (true) {
     std::vector<PipePair> pipes;
@@ -38,7 +39,7 @@ int main() {
         while (true) {
             if (WindowShouldClose()) goto exit;
             float deltaTime = GetFrameTime();
-            bird.velocity.y -= 1200*deltaTime;
+            bird.velocity.y -= 1500*deltaTime;
             if (IsKeyPressed(KEY_SPACE)) bird.velocity.y = 650;
             bird.rect.y -= bird.velocity.y*deltaTime;
 
@@ -55,7 +56,7 @@ int main() {
                         (float)windowSize.x,
                         (float)(rand()%(windowSize.y-450))+100.f,
                         150,
-                        300
+                        250
                     }, false
                 };
                 pipes.push_back(newPipe);
